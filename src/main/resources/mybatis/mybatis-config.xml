@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+
+    <typeAliases>
+        <package name="net.test.pojo"/>
+    </typeAliases>
+    <!--配置分页-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+    <!--接口映射文件-->
+    <mappers>
+        <package name="net.test.mapper"/>
+    </mappers>
+
+
+
+
+</configuration>

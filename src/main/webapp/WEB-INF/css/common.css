@@ -1,0 +1,127 @@
+body{
+    padding:0px;
+    margin:0;
+}
+
+
+.title{
+    height:35px;
+    padding:5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 35px;
+    color:#009688;
+    border-bottom:1px solid #009688;
+    margin-bottom:15px;
+}
+
+.cog-main{
+    background-color: #ffffff;
+    padding:10px 20px;
+    overflow: hidden;
+}
+
+.card-area{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e6e6e6;
+    background-color: #f2f2f2;
+    margin:10px 0px;
+}
+
+text{
+    display: block;
+    min-height: 26px;
+    line-height: 26px;
+    padding:5px 10px;
+    cursor: pointer;
+    font-weight:bold;
+}
+text.value{
+    color:#2F4056;
+    border-bottom:1px solid #2F4056;
+}
+text.value:hover{
+    background-color:#2F4056;
+    color:#ffffff;
+}
+
+
+.cell-row{
+    padding:15px;
+}
+
+
+.cell-row .cell-head{
+    height:35px;
+    line-height: 35px;
+    color:#333;
+    font-weight: bold;
+    font-size: 14px;
+}
+.cell-row .cell-head .small-head{
+    color:#dddddd !important;
+    font-size: 12px !important;;
+    margin-left:10px;
+}
+
+.cell-row .cell-content{
+
+}
+
+.share{
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    z-index: 980;
+    background-color:#a9a5a5;
+    opacity:0.2;
+}
+/**
+ * 修复 layui 表格checkbox异常
+ */
+.layui-table-cell .layui-form-checkbox{
+    margin-top: 6px !important;
+}
+
+
+.table-search-container{
+    border:1px solid #e6e6e6;
+    background-color: #f2f2f2;
+    padding:10px;
+    margin:12px 0px;
+}
+.table-search-container .layui-form-item{
+    margin-bottom:0px !important;
+    margin-top: 5px;
+}
+.none{
+    border-color:#e4e4e4 !important;
+}
+.none:hover{
+    background-color: #ffffff !important;
+}
+icon{
+    margin:5px;
+    cursor: pointer;
+}
+.site-title {
+    margin:10px 0 10px 0;
+    color: #009688;
+}
+    .site-title fieldset {
+        border: none;
+        padding: 0;
+        border-top: 1px solid #eee;
+    }
+        .site-title fieldset legend {
+            margin-left: 20px;
+            padding: 0 10px;
+            font-size:14px;
+        }
+            .site-title fieldset legend a{
+                color: #009688 !important;
+            }
+
