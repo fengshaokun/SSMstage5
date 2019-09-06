@@ -26,4 +26,14 @@
         <property name="basePackage" value="net.test.mapper"/>
 
     </bean>
+
+    <bean id="fastJsonHttpMessageConverter"
+          class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+    <property name="supportedMediaTypes">
+        <list>
+            <value>application/json;charset=UTF-8</value>
+        </list>
+    </property>
+    </bean>
+
 </beans>

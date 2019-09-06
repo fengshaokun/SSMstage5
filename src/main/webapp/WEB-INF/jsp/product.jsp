@@ -27,13 +27,13 @@
             <button class="btn-primary-bg" type="submit"> 新增</button>
         </td>
         <tbody>
-        <c:forEach items="${product}" var="product">
+
             <tr>
-                <td>${product.type}</td>
-                <td>${product.name}</td>
-                <td>${product.pair}</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-        </c:forEach>
+
         </tbody>
     </table>
 
@@ -41,6 +41,11 @@
         <button type="button" class="layui-btn" lay-demo="getData">获取右侧数据</button>
         <button type="button" class="layui-btn" lay-demo="reload">重载实例</button>
     </div>
+
+
+
+
+
     <div class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">职位</label>
@@ -50,50 +55,51 @@
         </div>
     </div>
 
-    <div id="text3"></div>
+
     <script>
         layui.use(['transfer', 'util'], function(){
             var $ = layui.$
                 ,transfer = layui.transfer
                 ,util = layui.util;
-
-            var ins2 = transfer.render({
-                elem: '#text2'
-                ,showSearch: true
-                ,onchange: function(obj){
-
-                   $.ajax({
-                       type: 'GET',
-                       url: "/fif/getValue",
-                       data: {pId:JSON.stringify(obj)},
-                       dataType:  'json',
-                       success:function(){
-
-                       }
-
-                   })
+            $.ajax({
+                type: 'POST',
+                url: "/fif/getAll",
+                dataType:  'json',
+                data: {},
+                success:function(data){
+                    var ins2 = transfer.render({
+                        elem: '#text2'
+                        ,showSearch: true
+                        ,onchange: function(obj){
+                            console.log(obj.title)
+                            var objStr= JSON.stringify(obj);
+                            console.log(objStr)
+                            $.ajax({
+                                type: 'POST',
+                                url: "/fif/getValue",
+                                dataType:  'json',
+                                data: {pId:objStr},
+                                success:function(data){
+                                    console.log(data)
+                                }
+                            })
+                        }
+                        ,parseData: function(res){
+                            return {
+                                "value":res.pair
+                                ,"title": res.pair
+                                ,"disabled": res.disabled
+                                ,"checked": res.checked
+                            }
+                        }
+                        ,data: data
+                        ,value: ["1", "5"]
+                    });
                 }
-                ,parseData: function(res){
-                    return {
-                        "value":res.value
-                        ,"title": res.label
-                        ,"disabled": res.disabled
-                        ,"checked": res.checked
-                    }
-                }
-                ,data: [
+            })
 
-                    <c:forEach items="${product}" var="product">
-                    {"value":"${product.pair}" ,"label":"${product.pair}"},
-                    </c:forEach>
 
-                    /*{"id": "1", "label": "瓦罐汤"}
-                    ,{"id": "2", "label": "油酥饼"}
-                    ,{"id": "3", "label": "炸酱面"}
-                      }*/
-                ]
-                ,value: ["1", "5"]
-            });
+
         });
 
     </script>
