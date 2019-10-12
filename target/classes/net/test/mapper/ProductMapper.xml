@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间指向对应的接口-->
+<mapper namespace="net.test.mapper.ProductMapper">
+
+    <resultMap id="productMapper" type="Product">
+        <result property="id" column="id"/>
+        <result property="productNo" column="product_no"/>
+        <result property="productName" column="product_name"/>
+        <result property="productType" column="product_Type"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="selectSysProduct" resultType="net.test.pojo.Product">
+        select * from t_product
+        where 1=1
+        <if test="productNo!=null and productNo!=''">
+            and product_no=#{productNo}
+        </if>
+        <if test="productName!=null and productName!=''">
+            and product_name like %#{productName}%
+        </if>
+        <if test="status!=null and status!=''">
+            and status=#{status}
+        </if>
+    </select>
+    <insert id="insertSelective">
+        insert into t_product (product_no,product _name,product_type,status) values(#{productNo},#{productName},#{productType},#{status})
+    </insert>
+
+    <update id="updateByPrimaryKeySelective">
+        update t_product set product _name=#{productName},product_type=#{productType},status=#{status}
+    </update>
+
+    <delete id="deleteByprimaryKey">
+        delete from t_product where id=#{id}
+    </delete>
+
+
+    <select id="selectAllProduct" resultMap="productMapper">
+          Select * from t_product
+    </select>
+
+
+    <select id="selectCityDto" resultType="net.test.pojo.City">
+       select * from city where pId = #{pId}
+    </select>
+
+
+    <select id="selectAllCityDto" resultType="net.test.pojo.CityDto">
+    select  * from  promary
+    </select>
+
+</mapper>

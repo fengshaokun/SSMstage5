@@ -65,7 +65,7 @@ public class ProductController {
     @ResponseBody
     @RequestMapping(value = "/getCity")
     public List<City> getCity(@Param("pId") Integer pId) {
-        List<City> list=new ArrayList<>();
+        List<City> list=new ArrayList<City>();
         if (pId!=0){
          list = productService.selectCityDto(pId);}
         return list;
